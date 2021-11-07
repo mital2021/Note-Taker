@@ -2,6 +2,7 @@ const fs = require('fs');
 const db  = require('./db/db.json');
 const express = require('express');
 const path = require('path');
+const { query } = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -14,16 +15,26 @@ app.use(express.static('public'));
 //   res.send(db);
 // });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/index.html'));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../../public/index.html'));
+// });
+
+// app.get('/notes', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../../public/notes.html'));
+// });
+
+
+app.get('/api/notes', (req, res) => {
+ const result = fs.writeFileSync(path.join(__dirname, '../db/db.json'),
+ JSON.stringify({noteTaker}, null, 2))
+ 
+ return res.json(result);
 });
 
-app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/notes.html'));
-});
 
 
-app.post('/api/db', (req, res) => {
+
+app.post('/api/notes', (req, res) => {
 console.log(req.body);
 res.join(req.body);
 });
@@ -31,10 +42,11 @@ res.join(req.body);
 
 
 
-function findById(id, noteTaker) {
-  const result = noteTaker.filter(Note => Note.id === id)[0];
-  return result;
-}
+
+// function findById(id, noteTaker) {
+//   const result = noteTaker.filter(Note => Note.id === id)[0];
+//   return result;
+// }
 
 
 
