@@ -1,3 +1,4 @@
+const fs = require('fs');
 const db  = require('./db/db.json');
 const express = require('express');
 const path = require('path');
@@ -40,7 +41,7 @@ function findById(id, noteTaker) {
 
 
 app.listen(PORT, () => {
-    console.log(`API server now on port 3001!`);
+    console.log(`API server now on port ${PORT}!`);
   });
 
 
