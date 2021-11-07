@@ -24,7 +24,7 @@ db.push(req.body);
 fs.writeFileSync(path.join(__dirname, './db/db.json', JSON.stringify(db)));
   
 
-res.send(db);
+res.send(data);
 });
 
 
