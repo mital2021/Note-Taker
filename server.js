@@ -3,7 +3,7 @@ const db  = require('./db/db.json');
 const express = require('express');
 const path = require('path');
 const app = express();
-const data = require('data');
+const newId= require('newId');
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,13 +24,13 @@ app.get('/notes', (req, res) => {
 //Get apiNotes
 app.get('/api/notes', (req, res) => {
  
-  res.sendFile(path.join(__dirname, './db/db.json'));
- // res.json(db)
+  fs.readFileSync(path.join(__dirname, './db/db.json'));
+  res.json(db)
 });
 
 // Post apiNotes
 app.post('/api/notes', (req, res) => {
-req.body.id = data.length.toString();
+req.body.id = newId.length.toString();
 db.push(req.body);
 fs.writeFileSync(path.join(__dirname, './db/db.json', JSON.stringify(db)));
   
