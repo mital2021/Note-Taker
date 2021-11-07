@@ -10,10 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// app.get('/api/db', (req, res) => {
-//   res.send(db);
-// });
-
 
 app.get('/api/notes', (req, res) => {
  
@@ -22,10 +18,10 @@ app.get('/api/notes', (req, res) => {
 
 
 app.post('/api/notes', (req, res) => {
-//console.log(req.body);
-req.body.id = path();
+const data = req;
+req.body.id = (data);
 db.push(req.body);
-fs.writeFile('./db/db.json', JSON.stringify(db));
+fs.writeFileSync(path.join(__dirname, './db/db.json', JSON.stringify(db)));
   
 
 res.send(db);
@@ -33,7 +29,7 @@ res.send(db);
 
 
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
