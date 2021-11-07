@@ -25,17 +25,11 @@ app.post('/api/notes', (req, res) => {
 //console.log(req.body);
 req.body.id = path();
 db.push(req.body);
-fs.writeFile('.db/db.json', JSON.stringify(db), err, data) => {
-  if (err) throw err;
-}
-res.json(db);
+fs.writeFile('./db/db.json', JSON.stringify(db));
+  
+
+res.send(db);
 });
-
-
-
-
-
-
 
 
 
