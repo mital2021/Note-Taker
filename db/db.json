@@ -1,32 +1,18 @@
-{
-    "noteTaker": [
+ [
     {
-        "id": "0",
+        
         "title":"TestTitle 1",
-        "text":"Test"
+        "text":"Test",
+        "id":"5632"
         
     },
 
     {
-        "id": "1",
+        
         "title":"TestTitle2",
-        "text":"Test1"
-        
-    },
-
-    {
-        "id": "2",
-        "title":"TestTitle3",
-        "text":"Test2 "
-        
-    },
-
-    {
-        "id": "3",
-        "title":"TestTitle4",
-        "text":"Test3"
-        
+        "text":"Test1",
+        "id": "5633"
     }
+]
 
-    ]
-}
+    
