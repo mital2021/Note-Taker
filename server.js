@@ -3,12 +3,14 @@ const db  = require('./db/db.json');
 const express = require('express');
 const path = require('path');
 const app = express();
-let data = require('data');
+const data = require('data');
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
@@ -19,15 +21,16 @@ app.get('/notes', (req, res) => {
 });
 
 
-
+//Get apiNotes
 app.get('/api/notes', (req, res) => {
  
-  res.json(db);
+  res.sendFile(path.join(__dirname, './db/db.json'));
+ // res.json(db)
 });
 
-
+// Post apiNotes
 app.post('/api/notes', (req, res) => {
-req.body.id = data;
+req.body.id = data.length.toString();
 db.push(req.body);
 fs.writeFileSync(path.join(__dirname, './db/db.json', JSON.stringify(db)));
   
