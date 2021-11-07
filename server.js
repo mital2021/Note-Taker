@@ -25,13 +25,13 @@ app.get('/notes', (req, res) => {
 app.get('/api/notes', (req, res) => {
  
   //fs.readFileSync(path.join(__dirname, './db/db.json'));
-  res.json(db)
+  res.json(db);
 });
 
 // Post apiNotes
 app.post('/api/notes', (req, res) => {
   let data = req
-req.body.id = (data);
+req.body.id = data();
 db.push(req.body);
 fs.writeFileSync(path.join(__dirname, './db/db.json', JSON.stringify(db)));
   
